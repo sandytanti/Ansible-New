@@ -1,0 +1,16 @@
+---
+- name: Error Handling
+  hosts: all
+  tasks:
+   - block:
+      - name: install tomcat9
+        apt:
+         name: tomcat9
+         state: present
+     rescue:
+      - name: install tomcat9
+        yum:
+         name: tomcat9
+         state: present
+...
+

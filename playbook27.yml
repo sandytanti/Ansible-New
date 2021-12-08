@@ -1,0 +1,29 @@
+---
+- name: Using handlers
+  hosts: all
+  tasks:
+   - name: Installing apache2
+     apt:
+      name: apache2
+      state: present
+     notify: Check url response 
+   - name: Edit index.html
+     copy:
+      content: "My TANTI TECH Welcome to Tanti Tech"
+      dest: /var/www/html/index.html
+     notify: restart_apache2
+  handlers:
+   - name: restart_apache2
+     service:
+      name: apache2
+      state: restarted
+   - name: Check url response
+     uri:
+      url: "{{item}}"
+      status_code: [200]
+     with_items:
+      - http://172.31.10.186
+      - http://172.31.0.242
+      - http://172.31.2.161        
+...
+

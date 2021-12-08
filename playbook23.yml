@@ -1,0 +1,21 @@
+---
+- name: using Debug module
+  hosts: all
+  tasks:
+   - name: creating a file
+     file: 
+      name: myfile
+      state: touch
+     register: a
+   - name: displaying of file module
+     debug:
+      var: a
+   - name: copy a file
+     copy:
+      src: /etc/passwd
+      dest: /tmp
+     register: b
+   - name: display output of copy module
+     debug: 
+      var: b
+...    

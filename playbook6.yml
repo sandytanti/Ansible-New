@@ -1,0 +1,14 @@
+---
+- name: Creating Dir and copy the password
+  hosts: all
+  tasks:
+   - name: creating Dir
+     file: 
+      name: /tmp/newdir
+      state: directory
+   - name: copy the password file
+     copy: 
+      src: /etc/passwd
+      dest: /tmp/newdir/passwd
+...
+

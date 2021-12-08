@@ -1,0 +1,13 @@
+---
+- name: Using debug and register
+  hosts: 172.31.10.186
+  tasks:
+   - name: Installing apache2
+     apt:
+      name: apache2
+      state: present
+     register: results
+   - name: Displaying the output
+     debug:
+      var: results
+...

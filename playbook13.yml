@@ -1,0 +1,16 @@
+---
+- name: creating users and copying files into user home dir's
+  hosts: all
+  tasks:
+   - name: creating users
+     user: 
+      name: "{{a}}"
+      password: "{{b}}"
+      home: "{{c}}"
+      uid: "{{d}}"
+   - name: copying files into users home dir's
+     copy:
+      src: "{{e}}"
+      dest: "{{f}}"
+...
+

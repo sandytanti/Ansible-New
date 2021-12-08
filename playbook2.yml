@@ -1,0 +1,14 @@
+---
+- name: install git and clone a remote git repo
+  hosts: all
+  tasks:
+   - name: install git
+     apt:
+      name: git
+      state: present
+   - name: clone a remote git repo
+     git:
+      repo: https://github.com/sandytanti/maven-Devops
+      dest: /tmp/mygit
+...
+               

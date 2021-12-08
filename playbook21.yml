@@ -1,0 +1,22 @@
+---
+- name: Creating users and creating files
+  hosts: all
+  tasks:
+   - name: Creating users
+     user:
+      name: "{{item.a}}"
+      password: "{{item.b}}"
+      home: "{{item.c}}"
+     with_items:
+      - {a: hari,b: intelliq,c: /home/hari}
+      - {a: ravi,b: newpassword,c: /home/ravi}
+   - name: creating files or directories in user home directories
+     file:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      mode: "{{item.c}}"
+     with_items:
+      - {a: /home/hari/file1,b: touch,c: 777}
+      - {a: /home/ravi/d1,b: directory,c: 000}
+...
+

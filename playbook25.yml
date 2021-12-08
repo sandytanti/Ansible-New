@@ -1,0 +1,19 @@
+---
+- name: check if a dir is present and if it is create a file in it
+  hosts: all
+  tasks:
+   - name: check if dir is present 
+     stat:
+      path: /var
+     register: results
+   - name: display output of the above stat modules
+     debug:
+      var: results
+   - name: create a file
+     file:
+      name: /var/myfile1
+      state: touch
+     when:
+      results.stat.exists == true         
+...
+

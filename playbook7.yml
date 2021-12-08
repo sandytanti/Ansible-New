@@ -1,0 +1,11 @@
+--- 
+- name: for capturing user eiht /bin/bash/ shell 
+  hosts: all 
+  tasks: 
+   - name: Capturing info from /etc/password 
+     shell: grep /bin/bash /etc/passwd > file1 
+   - name: Fethcing files 
+     fetch: 
+      src: /home/ubuntu/file1 
+      dest: /home/ubuntu
+...

@@ -1,0 +1,22 @@
+---
+- name: Configuring apache2
+  hosts: 172.31.10.186
+  become: yes
+  tasks:
+   - name: Installing apache2
+     apt:
+      name: apache2
+      state: present
+   - name: Edit index.html file
+     copy:
+      content: "Hi This is the home page of IntelliQ"
+      dest: /var/www/html/index.html
+   - name: Restart apache2
+     service:
+      name: apache2
+      state: restarted
+   - name: Checking url response
+     uri:
+      url: http://172.31.10.186
+      status_code: [200]
+...

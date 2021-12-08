@@ -1,0 +1,7 @@
+---
+- name: calling child playbooks
+  hosts: all
+  tasks:
+   - name: Execute the child playbooks
+     include: maven.yml
+...     

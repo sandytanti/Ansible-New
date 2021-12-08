@@ -1,0 +1,21 @@
+---
+- name: creatinig a users and copying config file
+  hosts: all
+  tasks:
+   - name: creating users
+     user:
+      name: "{{item.a}}"
+      password: "{{item.b}}"
+      home: "{{item.c}}"
+     with_items:
+      - {a: ram,b: tanti0,c: /home/ram}
+      - {a: sandy,b: tanti0,c: /home/sandy}
+   - name: copying files
+     copy:
+      src: "{{item.a}}"        
+      dest: "{{item.b}}"
+     with_items:
+      - {a: /etc/passwd,b: /home/ram}
+      - {a: /etc/group,b: /home/sandy}
+...
+

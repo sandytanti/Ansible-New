@@ -1,0 +1,10 @@
+---
+- name: installing tree
+  hosts: all
+  tasks:
+   - name: tree installation
+     apt:
+      name: tree
+      state: present
+...
+

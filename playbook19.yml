@@ -1,0 +1,15 @@
+---
+- name: implementing loops
+  hosts: all
+  tasks:
+   - name: installing/uninstalling s/w packages
+     apt:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      update_cache: "{{item.c}}"
+     with_items:
+      - {a: tree,b: present,c: yes}
+      - {a: default-jdk,b: present,c: yes}
+      - {a: git,b: present,c: yes}
+...
+

@@ -1,0 +1,15 @@
+---
+- hosts: 172.31.10.186
+  tasks:
+   - name: Fetch file from 1st managed node
+     fetch:
+      src: /home/ubuntu/file1
+      dest: /home/ubuntu
+- hosts: 172.31.0.242
+  tasks:
+   - name: Sending file from controller to managenode2
+     copy:
+      src: /home/ubuntu/172.31.10.186/home/ubuntu/file1
+      dest: /home/ubuntu
+...
+

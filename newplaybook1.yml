@@ -1,0 +1,14 @@
+---
+- name: Installing apahce2
+  hosts: all
+  vars:
+   a: apache2
+   b: present
+   c: yes
+  tasks:
+   - name: Apache installation
+     apt:
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+...
